@@ -1,4 +1,5 @@
 import React from "react";
+import Todo from "../models/todo"
 
 // We can use such a generic type for props or to be precise, a functional component out of the box
 // can be turned, can be converted into a generic function. Which then simply means that in the end
@@ -13,11 +14,12 @@ import React from "react";
 // built into this FC type, which we're using here, which we'll merge, whichever object type we're defining here
 //with that base object type, with the children property.
 
-const Todos: React.FC<{ items: string[] }> = (props) => {
+// Todo, we can set class as a type
+const Todos: React.FC<{ items: Todo[] }> = (props) => {
   return (
     <ul>
       {props.items.map((item) => (
-        <li key={item}>{item}</li>
+        <li key={item.id}>{item.text}</li>
       ))}
     </ul>
   );
