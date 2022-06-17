@@ -1,4 +1,5 @@
 import React from "react";
+import TodoItem from './TodoItem'
 import Todo from "../models/todo"
 
 // We can use such a generic type for props or to be precise, a functional component out of the box
@@ -19,8 +20,9 @@ const Todos: React.FC<{ items: Todo[] }> = (props) => {
   return (
     <ul>
       {props.items.map((item) => (
-        <li key={item.id}>{item.text}</li>
+        <TodoItem text={item.text} key={item.id}/>
       ))}
+       
     </ul>
   );
 };
