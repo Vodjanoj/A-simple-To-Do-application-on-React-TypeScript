@@ -1,14 +1,12 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import React from "react";
+import { TodosContext } from '../store/todos-context';
 import classes from './NewTodo.module.css'
  
 
-// FormEvent provided by our React package in the end which is this event object type
-// which we'll get automatically when listening to the form submission.
-// There also is a MouseEvent, for example, which you would get if you add onClick listener.
+const NewTodo: React.FC = () => {
+  const todosCtx = useContext(TodosContext);
 
-// void because this function doesn't return any value
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   // useRef actually is a generic type out of the box
   // for input type will be HTMLInputElement
   // For a button, it would be the HTMLButtonElement.
@@ -41,7 +39,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
       return;
     }
 
-    props.onAddTodo(enteredText);
+     todosCtx.addTodo(enteredText);
   };
 
   return (
